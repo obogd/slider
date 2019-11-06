@@ -3,8 +3,114 @@
 
   <head>
   	<title>slider</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
+    <head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="AW3D provides mainly two products. One is the precise off-the-shelf 3D map of 5m resolution with the global coverage. The other is the world’s highest resolution 3D map of 30cm resolution using DigitalGlobe’s satellite imageries."><meta name="keywords" content="digital elevation model,DEM,3D map data,topographic map,satellite image,ALOS,NTT DATA,RESTEC,JAXA"><link rel="stylesheet" id="ginger-style-css" href="https://www.aw3d.jp/en/wp-content/plugins/ginger/front/css/cookies-enabler.css?ver=4.8" type="text/css" media="all"><script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/0bBqi43w2fj-Lg1N3qzsqHNu/recaptcha__ru.js"></script><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/plugins/ginger/addon/analytics/gingeranalytics.min.js?ver=4.8"></script><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/plugins/ginger/front/js/cookies-enabler.min.js?ver=4.8"></script><script src="//www.google.com/recaptcha/api.js"></script><script type="text/javascript">
+jQuery(function() {
+	// reCAPTCHA&#12398;&#25407;&#20837;
+	jQuery( '.mw_wp_form_input button, .mw_wp_form_preview div[class="submit_Area"]' ).before( '<div data-callback="syncerRecaptchaCallback" data-sitekey="6LfkbKQUAAAAAEviiQr0W6uSxuq4ehu-sJhFaqh4" class="g-recaptcha">' );
+	// [input] Add disabled to input or button
+	jQuery( '.mw_wp_form_input button, .mw_wp_form_preview input[class="submit_go"]' ).attr( "disabled", "disabled" );
+	// [confirm] Remove disabled
+	// jQuery( '.mw_wp_form_confirm input, .mw_wp_form_confirm select, .mw_wp_form_confirm textarea, .mw_wp_form_confirm button' ).removeAttr( 'disabled' );
+});
+// reCAPTCHA Callback
+function syncerRecaptchaCallback( code ) {
+	if(code != "") {
+		jQuery( '.mw_wp_form_input button, .mw_wp_form_preview input[class="submit_go"]' ).removeAttr( 'disabled' );
+	}
+}
+</script><style type="text/css">
+.g-recaptcha { margin: 20px 0 15px; }.g-recaptcha > div { margin: 0 auto; }</style><script type="text/javascript">
+        var ginger_logger = "Y";
+        var ginger_logger_url = "https://www.aw3d.jp/en";
+        var current_url = "https://www.aw3d.jp/en/products/standard/";
+
+        function gingerAjaxLogTime(status) {
+            var xmlHttp = new XMLHttpRequest();
+            var parameters = "ginger_action=time";
+            var url= ginger_logger_url + "?" + parameters;
+            xmlHttp.open("GET", url, true);
+
+            //Black magic paragraph
+            xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xmlHttp.onreadystatechange = function() {
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    var time = xmlHttp.responseText;
+                    gingerAjaxLogger(time, status);
+                }
+            }
+
+            xmlHttp.send(parameters);
+        }
+
+        function gingerAjaxLogger(ginger_logtime, status) {
+            console.log(ginger_logtime);
+            var xmlHttp = new XMLHttpRequest();
+            var parameters = "ginger_action=log&time=" + ginger_logtime + "&url=" + current_url + "&status=" + status;
+            var url= ginger_logger_url + "?" + parameters;
+            //console.log(url);
+            xmlHttp.open("GET", url, true);
+
+            //Black magic paragraph
+            xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xmlHttp.send(parameters);
+        }
+
+    </script><style>
+            .ginger_container.dark {
+             background-color: #000000;
+                        }
+
+                                                        </style><link rel="icon" href="https://www.aw3d.jp/en/wp-content/uploads/sites/2/2017/09/cropped-aw3d-logo_512x512-32x32.png" sizes="32x32"><link rel="icon" href="https://www.aw3d.jp/en/wp-content/uploads/sites/2/2017/09/cropped-aw3d-logo_512x512-192x192.png" sizes="192x192"><link rel="apple-touch-icon-precomposed" href="https://www.aw3d.jp/en/wp-content/uploads/sites/2/2017/09/cropped-aw3d-logo_512x512-180x180.png"><meta name="msapplication-TileImage" content="https://www.aw3d.jp/en/wp-content/uploads/sites/2/2017/09/cropped-aw3d-logo_512x512-270x270.png"><style type="text/css" id="wp-custom-css">
+			/*
+&#12371;&#12371;&#12395;&#29420;&#33258;&#12398; CSS &#12434;&#36861;&#21152;&#12377;&#12427;&#12371;&#12392;&#12364;&#12391;&#12365;&#12414;&#12377;&#12290;
+
+footer #footer #footerSitemap {
+  height: 250px;
+  margin: 0;
+  padding: 25px 0 0 30px;
+  border-top: 1px solid #484848;
+  border-bottom: 1px solid #212121;
+}
+
+&#35443;&#12375;&#12367;&#12399;&#19978;&#12398;&#12504;&#12523;&#12503;&#12450;&#12452;&#12467;&#12531;&#12434;&#12463;&#12522;&#12483;&#12463;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;
+*/		</style><!--[if lt IE 9]>
+<script src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/html5shiv.js"></script>
+<script src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/css3-mediaqueries.js"></script>
+<![endif]--><link rel="stylesheet" href="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/css/reset.css"><link rel="stylesheet" href="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/css/base.css"><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/jquery.min.js"></script><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/common.js"></script><!--bxslider --><link rel="stylesheet" href="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/slider/jquery.bxslider.css"><script src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/slider/jquery.bxslider.min.js"></script><script>
+$(function(){
+  //&#35501;&#12415;&#36796;&#12415;&#26178;
+  $(window).load(function(){
+    $(".slideImg").css("opacity","1");
+    $(".slideImg_02").css("opacity","1");
+
+    var imgSize = $(".slideImg img").length;
+    console.log(imgSize);
+    if(imgSize > 1){
+      //&#19978;&#37096;&#12473;&#12521;&#12452;&#12489;&#34920;&#31034;
+      $(".slideImg").bxSlider({
+        mode: 'horizontal',
+        auto: true,
+        pause: 4000,
+        controls: false
+      });
+      $(".pro_item_Mv p").css("bottom","0");
+    }
+    $(".slideImg_02").bxSlider({
+      mode: 'horizontal',
+      auto: true,
+      pause: 4000,
+      controls: false
+    });
+  });
+});
+</script><link rel="stylesheet" href="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/products/css/products.css"><!--beforeafter --><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/beforeafter/jquery-ui.min.js"></script><script type="text/javascript" src="https://www.aw3d.jp/en/wp-content/themes/AW3DEnglish/common/js/lib/beforeafter/jquery.beforeafter-1.4.js"></script><script type="text/javascript">
+$(function(){
+	$('#container').beforeAfter();
+  $('#container_Sp').beforeAfter();
+});
+</script><title>  AW3D Standard | AW3D Global High-resolution 3D Map – Global Digital Elevation Model</title></head>
   </head>
 
  <body>
