@@ -3,13 +3,152 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
-<title>CodePen - Full width full height before-after slider</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://unpkg.com/beerslider/dist/BeerSlider.css">
+<title>CodePen - BeerSlider - before-after reveal slider - code source, basic demo</title>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <style>
   .beer-slider {
-  width: 100%;
-  height: 100vh;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.beer-slider *, .beer-slider:before, .beer-slider:after,
+.beer-slider *:before,
+.beer-slider *:after {
+  box-sizing: border-box;
+}
+.beer-slider img, .beer-slider svg {
+  vertical-align: bottom;
+}
+.beer-slider > img {
+  max-width: 100%;
+  height: auto;
+}
+
+.beer-reveal {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.beer-reveal > :first-child {
+  width: 200%;
+  max-width: none;
+}
+.beer-reveal > img:first-child {
+  height: auto;
+}
+
+.beer-range {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  margin: 0;
+  left: -1px;
+  width: calc(100% + 2px);
+  cursor: pointer;
+  -webkit-appearance: slider-horizontal !important;
+  -moz-appearance: none;
+  opacity: 0;
+  -ms-touch-action: auto;
+  touch-action: auto;
+}
+.beer-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 300vh;
+}
+.beer-range::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 300vh;
+}
+.beer-range::-ms-tooltip {
+  display: none;
+}
+
+.beer-handle {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  color: #000;
+  background: rgba(255, 255, 255, 0.5);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0);
+  transition: background 0.3s, box-shadow 0.3s, opacity 0.5s 0.25s;
+}
+.beer-handle:before, .beer-handle:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  border-top: solid 2px;
+  border-left: solid 2px;
+  transform-origin: 0 0;
+}
+.beer-handle:before {
+  left: 10px;
+  transform: rotate(-45deg);
+}
+.beer-handle:after {
+  right: 0;
+  transform: rotate(135deg);
+}
+
+.beer-range:focus ~ .beer-handle {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+.beer-slider[data-beer-label]:after,
+.beer-reveal[data-beer-label]:after {
+  content: attr(data-beer-label);
+  position: absolute;
+  top: 1.5rem;
+  line-height: 1;
+  padding: 0.5rem;
+  border-radius: 0.125rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.beer-slider[data-beer-label]:after {
+  right: 1.5rem;
+}
+
+.beer-reveal[data-beer-label]:after {
+  left: 1.5rem;
+}
+
+.beer-slider[data-beer-label=""]:after,
+.beer-reveal[data-beer-label=""]:after {
+  content: none;
+}
+
+.beer-ready .beer-reveal, .beer-ready .beer-handle {
+  opacity: 1;
+}
+
+.beer-slider {
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+body {
+  max-width: 720px;
+  margin: 2rem auto;
 }
 </style>
 <script>
@@ -22,22 +161,105 @@
 </script>
 </head>
 <body translate="no">
-<div id="slider" class="beer-slider beer-ready" data-beer-label="before" data-start="75">
-<svg width="100%" height="100%" viewBox="0 0 600 361" preserveAspectRatio="xMidYMid slice" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/original-baltic.jpg" aria-labelledby="title1" aria-role="img">
-<title id="title1">Baltic seashore - unprocessed</title>
-<image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/original-baltic.jpg" x="0" y="0" width="100%" height="100%"></image>
-</svg>
-<div class="beer-reveal" data-beer-label="after" style="width: 74%;">
-<svg width="100%" height="100%" viewBox="0 0 600 361" preserveAspectRatio="xMidYMid slice" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/warmsphere-baltic.jpg" aria-labelledby="title2" aria-role="img" style="width: 1034px;">
-<title id="title2">Baltic seashore - warmshphere preset applied</title>
-<image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/warmsphere-baltic.jpg" x="0" y="0" width="100%" height="100%"></image>
-</svg>
+<div id="slider1" class="beer-slider beer-slider-wlabels beer-ready" data-beer-label="before">
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/before.jpg" alt="Unprocessed original photo">
+<div class="beer-reveal" data-beer-label="after" style="width: 53%;">
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/after.jpg" alt="Photo after playing with Lightroom presets" style="width: 720px;">
 </div>
-<input type="range" class="beer-range" aria-label="Percent of revealed content" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74" value="50" min="0" max="100"><span class="beer-handle" style="left: 74%;"></span></div>
+<input type="range" class="beer-range" aria-label="Percent of revealed content" aria-valuemin="0" aria-valuemax="100" aria-valuenow="53" value="50" min="0" max="100"><span class="beer-handle" style="left: 53%;"></span></div>
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
-<script src="https://unpkg.com/beerslider/dist/BeerSlider.js"></script>
 <script id="rendered-js">
-      new BeerSlider(document.getElementById("slider"));
+      class BeerSlider {
+
+  constructor(element, { start = '50', prefix = 'beer' } = {}) {
+    this.start = parseInt(start) ? Math.min(100, Math.max(0, parseInt(start))) : 50;
+    this.prefix = prefix;
+    if (!element || element.children.length !== 2) {
+      return;
+    }
+    this.element = element;
+    this.revealContainer = this.element.children[1];
+    if (this.revealContainer.children.length < 1) {
+      return;
+    }
+    this.revealElement = this.revealContainer.children[0];
+    this.range = this.addElement('input', {
+      type: 'range',
+      class: `${this.prefix}-range`,
+      'aria-label': 'Percent of revealed content',
+      'aria-valuemin': '0',
+      'aria-valuemax': '100',
+      'aria-valuenow': this.start,
+      value: this.start,
+      min: '0',
+      max: '100' });
+
+    this.handle = this.addElement('span', {
+      class: `${this.prefix}-handle` });
+
+    this.onImagesLoad();
+  }
+  init() {
+    this.element.classList.add(`${this.prefix}-ready`);
+    this.setImgWidth();
+    this.move();
+    this.addListeners();
+  }
+  loadingImg(src) {
+    return new Promise((resolve, reject) => {
+      if (!src) {
+        resolve();
+      }
+      const img = new Image();
+      img.onload = () => resolve();
+      img.onerror = () => reject();
+      img.src = src;
+    });
+  }
+  loadedBoth() {
+    const mainImageSrc = this.element.children[0].src || this.element.children[0].getAttribute(`data-${this.prefix}-src`);
+    const revealImageSrc = this.revealElement.src || this.revealElement.getAttribute(`data-${this.prefix}-src`);
+    return Promise.all([this.loadingImg(mainImageSrc), this.loadingImg(revealImageSrc)]);
+  }
+  onImagesLoad() {
+    if (!this.revealElement) {
+      return;
+    }
+    this.loadedBoth().then(
+    () => {
+      this.init();
+    },
+    () => {
+      console.error('Some errors occurred and images are not loaded.');
+    });
+
+  }
+  addElement(tag, attributes) {
+    const el = document.createElement(tag);
+    Object.keys(attributes).forEach(key => {
+      el.setAttribute(key, attributes[key]);
+    });
+    this.element.appendChild(el);
+    return el;
+  }
+  setImgWidth() {
+    this.revealElement.style.width = getComputedStyle(this.element)['width'];
+  }
+  addListeners() {
+    const eventTypes = ['input', 'change'];
+    eventTypes.forEach(i => {
+      this.range.addEventListener(i, () => {this.move();});
+    });
+    window.addEventListener('resize', () => {this.setImgWidth();});
+  }
+  move() {
+    this.revealContainer.style.width = `${this.range.value}%`;
+    this.handle.style.left = `${this.range.value}%`;
+    this.range.setAttribute('aria-valuenow', this.range.value);
+  }}
+
+
+new BeerSlider(document.getElementById('slider1'));
       //# sourceURL=pen.js
     </script>
 
