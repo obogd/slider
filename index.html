@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+<title>CodePen - Full width full height before-after slider</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://unpkg.com/beerslider/dist/BeerSlider.css">
+<style>
+  .beer-slider {
+  width: 100%;
+  height: 100vh;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div id="slider" class="beer-slider beer-ready" data-beer-label="before" data-start="75">
+<svg width="100%" height="100%" viewBox="0 0 600 361" preserveAspectRatio="xMidYMid slice" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/original-baltic.jpg" aria-labelledby="title1" aria-role="img">
+<title id="title1">Baltic seashore - unprocessed</title>
+<image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/original-baltic.jpg" x="0" y="0" width="100%" height="100%"></image>
+</svg>
+<div class="beer-reveal" data-beer-label="after" style="width: 74%;">
+<svg width="100%" height="100%" viewBox="0 0 600 361" preserveAspectRatio="xMidYMid slice" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/warmsphere-baltic.jpg" aria-labelledby="title2" aria-role="img" style="width: 1034px;">
+<title id="title2">Baltic seashore - warmshphere preset applied</title>
+<image xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/warmsphere-baltic.jpg" x="0" y="0" width="100%" height="100%"></image>
+</svg>
+</div>
+<input type="range" class="beer-range" aria-label="Percent of revealed content" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74" value="50" min="0" max="100"><span class="beer-handle" style="left: 74%;"></span></div>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src="https://unpkg.com/beerslider/dist/BeerSlider.js"></script>
+<script id="rendered-js">
+      new BeerSlider(document.getElementById("slider"));
+      //# sourceURL=pen.js
+    </script>
 
-  <head>
-  	<title>slider</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
-  </head>
 
-  <body>
-<header>
-  <div class="beer-slider">
-    <div class="pat1" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/wild-sea.png"></div>
-    <dic class="beer-reveal">
-      <div class="pat2" data-beer-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/74321/wild-sea-grayscale.png"></div>
-    </div>
-  </div>
-  <h1>
-    Background Comparison   
-  </h1>
-  <p>find this pattern in <a href="http://thepatternlibrary.com/#wild-sea">thepatternlibrary</a></p>
-  <script src="script.js"></script>
-</header>
-</body>
-</html>
+</body></html>
