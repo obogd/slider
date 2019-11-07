@@ -1,1 +1,1 @@
-new BeerSlider(document.getElementById("slider"))
+new BeerSlider(document.querySelector(".beer-slider"))
